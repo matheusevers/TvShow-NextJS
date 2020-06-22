@@ -41,6 +41,7 @@ const Header = () => {
           background-color: #333;
           color: #fff;
           text-align: center;
+          margin-bottom: 10px;
         }
       `}</style>
     </div>

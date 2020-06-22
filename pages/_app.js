@@ -9,6 +9,16 @@ class MyApp extends App {
       <>
         <Header />
         <Component {...pageProps} />
+
+        <style jsx>
+          {`
+            :global(ul) {
+              padding: 0;
+              margin: 0;
+              list-style-type: none;
+            }
+          `}
+        </style>
       </>
     );
   }
