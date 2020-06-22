@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail";
-
+import Header from "../../components/Header";
 const Home = ({ shows, country }) => {
   const renderShows = () => {
     return shows.map((showItem, index) => {
@@ -20,21 +20,24 @@ const Home = ({ shows, country }) => {
     });
   };
   return (
-    <ul className="tvshows-grid">
-      {renderShows()}
-      <style jsx>
-        {`
-          .tvshows-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-          }
-        `}
-      </style>
-    </ul>
+    <div>
+      <Header />
+      <ul className="tvshows-grid">
+        {renderShows()}
+        <style jsx>
+          {`
+            .tvshows-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 20px;
+              padding: 0;
+              margin: 0;
+              list-style-type: none;
+            }
+          `}
+        </style>
+      </ul>
+    </div>
   );
 };
 
