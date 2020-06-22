@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail";
 
-const Home = ({ shows }) => {
+const Home = ({ shows, country }) => {
   const renderShows = () => {
     return shows.map((showItem, index) => {
       const { show } = showItem;
@@ -10,14 +10,32 @@ const Home = ({ shows }) => {
       return (
         <li key={index}>
           <Thumbnail
-            imageUrl={show.image ? show.image.medium : ""}
+            imageUrl={(show.image && show.image.medium) || undefined}
             caption={show.name}
+            href="/[country]/[showId]"
+            as={`/${country}/${show.id}`}
           />
         </li>
       );
     });
   };
-  return <ul className="tvshows">{renderShows()}</ul>;
+  return (
+    <ul className="tvshows-grid">
+      {renderShows()}
+      <style jsx>
+        {`
+          .tvshows-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+          }
+        `}
+      </style>
+    </ul>
+  );
 };
 
 // Home.getInitialProps = async () => {
@@ -35,7 +53,7 @@ export async function getServerSideProps(context) {
     `http://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`
   );
   return {
-    props: { shows: response.data },
+    props: { shows: response.data, country },
   };
 }
 
