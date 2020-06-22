@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail";
-import Header from "../../components/Header";
 const Home = ({ shows, country }) => {
   const renderShows = () => {
     return shows.map((showItem, index) => {
@@ -21,7 +20,6 @@ const Home = ({ shows, country }) => {
   };
   return (
     <div>
-      <Header />
       <ul className="tvshows-grid">
         {renderShows()}
         <style jsx>

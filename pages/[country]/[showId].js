@@ -1,13 +1,11 @@
 import axios from "axios";
 import parse from "html-react-parser";
 import Cast from "../../components/Cast";
-import Header from "../../components/Header";
 
 const ShowDetails = ({ show }) => {
   const { name, image, summary, _embedded } = show;
   return (
     <div className="show-details">
-      <Header />
       <div
         className="show-details__poster"
         style={{ backgroundImage: `url(${image.original})` }}
